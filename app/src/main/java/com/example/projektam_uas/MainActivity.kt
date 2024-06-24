@@ -105,19 +105,19 @@ class ScheduleViewModel {
 
     fun addSchedule(schedule: ScheduleItem) {
         when (schedule.category) {
-            "Harian" -> dailySchedules.add(schedule)
-            "Organisasi" -> organizationSchedules.add(schedule)
-            "Tugas" -> assignmentSchedules.add(schedule)
-            "Prioritas" -> prioritySchedules.add(schedule)
+            "Daily" -> dailySchedules.add(schedule)
+            "Organization" -> organizationSchedules.add(schedule)
+            "Assignment" -> assignmentSchedules.add(schedule)
+            "Priority" -> prioritySchedules.add(schedule)
         }
     }
 
     fun deleteSchedule(schedule: ScheduleItem) {
         when (schedule.category) {
-            "Harian" -> dailySchedules.remove(schedule)
-            "Organisasi" -> organizationSchedules.remove(schedule)
-            "Tugas" -> assignmentSchedules.remove(schedule)
-            "Prioritas" -> prioritySchedules.remove(schedule)
+            "Daily" -> dailySchedules.remove(schedule)
+            "Organization" -> organizationSchedules.remove(schedule)
+            "Assignment" -> assignmentSchedules.remove(schedule)
+            "Priority" -> prioritySchedules.remove(schedule)
         }
     }
 
@@ -136,18 +136,18 @@ fun MainScreen(navController: NavHostController) {
             .padding(16.dp)
     ) {
         Text(
-            text = "Selamat Datang di TASKLY",
+            text = "Welcome to",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black
         )
         Text(
-            text = "HALO ORANG PRODUKTIF !!",
-            fontSize = 18.sp,
+            text = "TASKLY SCHEDULER",
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(26.dp))
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -161,15 +161,15 @@ fun MainScreen(navController: NavHostController) {
                     .fillMaxSize()
             )
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(26.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            TombolIkon(teks = "Harian", resGambar = R.drawable.dailyy) {
+            TombolIkon(teks = "Daily", resGambar = R.drawable.dailyy) {
                 navController.navigate("daily_schedule")
             }
-            TombolIkon(teks = "Organisasi", resGambar = R.drawable.meetingg) {
+            TombolIkon(teks = "Organization", resGambar = R.drawable.meetingg) {
                 navController.navigate("organization_schedule")
             }
         }
@@ -178,10 +178,10 @@ fun MainScreen(navController: NavHostController) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            TombolIkon(teks = "Tugas", resGambar = R.drawable.assignmentt) {
+            TombolIkon(teks = "Assignment", resGambar = R.drawable.assignmentt) {
                 navController.navigate("assignment_schedule")
             }
-            TombolIkon(teks = "Prioritas", resGambar = R.drawable.priorityy) {
+            TombolIkon(teks = "Priority", resGambar = R.drawable.priorityy) {
                 navController.navigate("priority_schedule")
             }
         }
@@ -194,7 +194,7 @@ fun MainScreen(navController: NavHostController) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             TombolBawah(teks = "Home", resGambar = R.drawable.home)
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -207,7 +207,7 @@ fun NewScheduleScreen(navController: NavHostController, scheduleViewModel: Sched
     var description by remember { mutableStateOf("") }
     var deadline by remember { mutableStateOf("") }
     var selectedCategory by remember { mutableStateOf("") }
-    val categories = listOf("Harian", "Organisasi", "Tugas", "Prioritas")
+    val categories = listOf("Daily", "Organization", "Assignment", "Priority")
 
     Column(
         modifier = Modifier
@@ -256,7 +256,7 @@ fun NewScheduleScreen(navController: NavHostController, scheduleViewModel: Sched
             },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            Text(text = "Tambah")
+            Text(text = "Add")
         }
         Spacer(modifier = Modifier.weight(1f))
         Row(
@@ -269,7 +269,7 @@ fun NewScheduleScreen(navController: NavHostController, scheduleViewModel: Sched
             TombolBawah(teks = "Home", resGambar = R.drawable.home) {
                 navController.navigate("main")
             }
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -303,7 +303,7 @@ fun DailyScheduleScreen(navController: NavHostController, scheduleViewModel: Sch
             TombolBawah(teks = "Home", resGambar = R.drawable.home) {
                 navController.navigate("main")
             }
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -337,7 +337,7 @@ fun OrganizationScheduleScreen(navController: NavHostController, scheduleViewMod
             TombolBawah(teks = "Home", resGambar = R.drawable.home) {
                 navController.navigate("main")
             }
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -371,7 +371,7 @@ fun AssignmentScheduleScreen(navController: NavHostController, scheduleViewModel
             TombolBawah(teks = "Home", resGambar = R.drawable.home) {
                 navController.navigate("main")
             }
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -405,7 +405,7 @@ fun PriorityScheduleScreen(navController: NavHostController, scheduleViewModel: 
             TombolBawah(teks = "Home", resGambar = R.drawable.home) {
                 navController.navigate("main")
             }
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -468,7 +468,7 @@ fun ScheduleDetailScreen(
             TombolBawah(teks = "Home", resGambar = R.drawable.home) {
                 navController.navigate("main")
             }
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -487,7 +487,7 @@ fun EditScheduleScreen(
     var scheduleName by remember { mutableStateOf(name) }
     var scheduleDescription by remember { mutableStateOf(description) }
     var scheduleDeadline by remember { mutableStateOf(deadline) }
-    val categories = listOf("Harian", "Organisasi", "Tugas", "Prioritas")
+    val categories = listOf("Daily", "Organization", "Assignment", "Priority")
     var selectedCategory by remember { mutableStateOf(category) }
 
     Column(
@@ -538,7 +538,7 @@ fun EditScheduleScreen(
             },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            Text(text = "Simpan")
+            Text(text = "Save")
         }
         Spacer(modifier = Modifier.weight(1f))
         Row(
@@ -551,7 +551,7 @@ fun EditScheduleScreen(
             TombolBawah(teks = "Home", resGambar = R.drawable.home) {
                 navController.navigate("main")
             }
-            TombolBawah(teks = "Jadwal", resGambar = R.drawable.calendar) {
+            TombolBawah(teks = "Schedule", resGambar = R.drawable.calendar) {
                 navController.navigate("new_schedule")
             }
         }
@@ -606,7 +606,7 @@ fun CategoryDropdown(label: String, categories: List<String>, selectedCategory: 
         var expanded by remember { mutableStateOf(false) }
         Box(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = selectedCategory.ifEmpty { "Pilih kategori" },
+                text = selectedCategory.ifEmpty { "Select Category" },
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { expanded = true }
