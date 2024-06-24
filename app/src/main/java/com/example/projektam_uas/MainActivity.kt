@@ -154,7 +154,12 @@ fun MainScreen(navController: NavHostController) {
                 .height(200.dp)
                 .background(Color.LightGray, shape = RoundedCornerShape(8.dp))
         ) {
-            // Gunakan pustaka grafik sebenarnya untuk menampilkan grafik batang
+            Image(
+                painter = painterResource(id = R.drawable.taskly2),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+            )
         }
         Spacer(modifier = Modifier.height(16.dp))
         Row(
